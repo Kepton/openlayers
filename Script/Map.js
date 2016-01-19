@@ -18,15 +18,17 @@ function init()
 
     map = new OpenLayers.Map('map', options);
 
+    //group就是相应的图层组，在Geoserver中该图层组叫 guangdong
     var group = new OpenLayers.Layer.WMS("group",
-              //geoserver所在服务器地址  this id is not existed
-              "http://211.111.111.111:8090/geoserver/guangdong/wms",
-              {
-                  layers: "guangdong",
-                  transparent: "true"
-              },
-               { isBaseLayer: true }
-            );
+       //geoserver所在服务器地址
+       "http://192.168.0.87:8090/geoserver/guangdong/wms",
+       {
+           layers: "guangdong",//图层组名称
+           transparent: "true"
+       },
+        { isBaseLayer: true }
+     );
+
     map.addLayer(group);
     
     map.zoomToExtent(bounds);//将地图
